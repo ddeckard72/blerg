@@ -17,6 +17,14 @@ class PostsController < ApplicationController
     render :edit
   end
 
+  def update
+    post = Post.find(params[:id])
+    post.update(title: params[:title],
+                 content: params[:content],
+                 tag_names: params[:tags])
+    redirect_to post_path(post)
+  end
+
   def index
     @posts = Post.page(params[:page]).per(10)
     render :index
