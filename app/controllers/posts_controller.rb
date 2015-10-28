@@ -20,8 +20,8 @@ class PostsController < ApplicationController
   def update
     post = Post.find(params[:id])
     post.update(title: params[:title],
-                 content: params[:content],
-                 tag_names: params[:tags])
+                content: params[:content],
+                tag_names: params[:tags])
     redirect_to post_path(post)
   end
 
@@ -33,6 +33,12 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     render :show
+  end
+
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to posts_path
   end
 end
 
