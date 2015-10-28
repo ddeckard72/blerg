@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   def new
+    @post = Post.new
     render :new
   end
 
@@ -9,6 +10,11 @@ class PostsController < ApplicationController
                        tag_names: params[:tags],
                        written_at: DateTime.now)
     redirect_to post_path(post)
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+    render :edit
   end
 
   def index
