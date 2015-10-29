@@ -1,0 +1,7 @@
+<h1>Edit Post</h1>
+
+<%= form_tag(post_path(@post), method: :put) do %>
+  <%= render partial: "form" %>
+<% end %>
+
+<%= link_to "Back", :back %>
